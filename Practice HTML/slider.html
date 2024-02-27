@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Carousel container */
+        .carousel-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Slides container */
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Individual slide */
+        .slide {
+            width: 100%;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Navigation buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+    </style>
+    <title>Simple Carousel</title>
+</head>
+<body>
+
+<div class="carousel-container">
+    <div class="slides">
+        <div class="slide" style="background-color: #1abc9c;">fsfsf</div>
+        <div class="slide" style="background-color: #3498db;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, neque unde. Fugit, excepturi omnis a corrupti et voluptates quia nostrum iusto tempore similique impedit, accusantium quas harum quaerat aspernatur quae?</div>
+        <div class="slide" style="background-color: #e74c3c;">asfasf</div>
+        <!-- Add more slides as needed -->
+    </div>
+    <div class="prev" onclick="prevSlide()">&#10094; </div>
+    <div class="next" onclick="nextSlide()">&#10095;</div>
+</div>
+
+<script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        currentIndex = (index + totalSlides) % totalSlides; // Ensure a positive index
+
+        const translateValue = -currentIndex * 100 + '%';
+        slides.style.transform = 'translateX(' + translateValue + ')';
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+</script>
+
+</body>
+</html>
